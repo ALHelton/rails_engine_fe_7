@@ -1,14 +1,10 @@
 class MerchantsController < ApplicationController
   def index
-    response = Faraday.get("http://localhost:3000/api/v1/merchants")
-    @merchants = JSON.parse(response.body, symbolize_names: true)[:data]
+    @merchants = RailsEngineFacade.new.all_merchants
   end
 
   def show
-    merchant_response = Faraday.get("http://localhost:3000/api/v1/merchants/#{params[:id]}")
-    @merchant = JSON.parse(merchant_response.body, symbolize_names: true)[:data]
-    merchant_items_response = Faraday.get("http://localhost:3000/api/v1/merchants/#{params[:id]}/items")
-    @merchant_items = JSON.parse(merchant_items_response.body, symbolize_names: true)[:data]
-    require 'pry'; binding.pry
+    @merchant = RailsEngineFacade.new.merchant_by_id(params[:id])
+    @merchant_items = RailsEngineFacade.new.merchant_items(params[:id])
   end
 end
