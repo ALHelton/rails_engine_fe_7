@@ -7,9 +7,9 @@ RSpec.describe RailsEngineFacade do
 
   describe "It creates poros for" do
     it "Merchants" do
-      expect(merchants.first).to be_a(Merchant)
-      expect(merchants.first.id).to be_a(String)
-      expect(merchants.first.name).to be_a(String)
+      expect(merchants.sample).to be_a(Merchant)
+      expect(merchants.sample.id).to be_a(String)
+      expect(merchants.sample.name).to be_a(String)
     end
 
     it "Merchant by id" do
@@ -19,11 +19,11 @@ RSpec.describe RailsEngineFacade do
     end
 
     it "Merchant Items" do
-      expect(items.first).to be_an(Item)
-      expect(items.first.id).to be_a(String)
-      expect(items.first.name).to be_a(String)
-      expect(items.first.description).to be_a(String)
-      expect(items.first.unit_price).to be_a(Float)
+      expect(items.sample).to be_an(Item)
+      expect(items.sample.id).to be_a(String)
+      expect(items.sample.name).to be_a(String)
+      expect(items.sample.description).to be_a(String)
+      expect(items.sample.unit_price).to be_a(Float)
     end
   end
 end
